@@ -449,3 +449,7 @@ anicraft	Classic tweens with eight easing presets and custom ease curves, plus s
 	Unlock version?	Versionssperre aufheben?
 	{app} is pinned to {version}. Follow the latest release instead?	{app} ist auf {version} festgelegt. Stattdessen der neuesten Version folgen?
 	Unlock	Entsperren
+	Plugins	Plugins
+	Plugins are unavailable: {error}	Plugins sind nicht verfügbar: {error}
+	Updating the plugin catalogue…	Plugin-Katalog wird aktualisiert…
+	The plugin catalogue could not be updated: {error}	Der Plugin-Katalog konnte nicht aktualisiert werden: {error}

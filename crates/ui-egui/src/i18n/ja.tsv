@@ -452,3 +452,7 @@ anicraft	Classic tweens with eight easing presets and custom ease curves, plus s
 	Unlock version?	バージョンの固定を解除しますか？
 	{app} is pinned to {version}. Follow the latest release instead?	{app} は {version} に固定されています。代わりに最新リリースを使用しますか？
 	Unlock	固定を解除
+	Plugins	プラグイン
+	Plugins are unavailable: {error}	プラグインを利用できません：{error}
+	Updating the plugin catalogue…	プラグインのカタログを更新しています…
+	The plugin catalogue could not be updated: {error}	プラグインのカタログを更新できませんでした：{error}

@@ -89,6 +89,14 @@ you when an update is out. It is a small native app that can sit in your menu ba
 
 The web version shows the same catalog in the browser, with the latest download for each app.
 
+## Plugins
+
+Plugins add features to the Craft apps: effects, panels and commands. Open **Plugins** from the header (desktop only) to manage them for the whole suite: search, install, update, pin or roll back a version, choose what a plugin turns on, grant or revoke its permissions, and remove it. Installing never turns anything on by itself; you set a plugin up and confirm its permissions first.
+
+- **Every app has its own plugin manager too.** The same manager is built into each Craft app, and `<app>-cli plugin` does the same from a terminal (for example `effectcraft-cli plugin search`). ArtCraft Launcher is one more way in to the same store, so it is never required.
+- **The plugin index is fetched when you open Plugins.** The first time you open it in a session, ArtCraft Launcher refreshes the index in the background. Plugin files download only when you choose them.
+- **Plugins are made by their authors.** ArtCraft lists them but does not build, host or guarantee them.
+
 ## Interface languages
 
 The interface is in English, Brazilian Portuguese (Português (Brasil)), Czech (Čeština), French

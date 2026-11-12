@@ -35,6 +35,13 @@ log = "0.4"
 jiff = "0.2"
 craft-update = { version = "=0.1.0", git = "https://github.com/storytold/craft-libs", rev = "6e03f65bf45181db77ba6229716e6624db9eb25b" }
 craft-ui = { version = "=0.1.0", git = "https://github.com/storytold/craft-libs", rev = "92d392cff132eaf53e13afff77f38b5c11b73aa0" }
+# The shared plugin platform (plugin management, Plugins dialog). Beta layout: path deps to the
+# craft-extensions checkout beside this repo. Before upstreaming, these become git deps pinned to a
+# craft-extensions revision.
+craft-ext-core = { path = "../craft-extensions/crates/ext-core" }
+craft-ext-store = { path = "../craft-extensions/crates/ext-store", features = ["net"] }
+craft-ext-ui = { path = "../craft-extensions/crates/ext-ui" }
+craft-ext-cli = { path = "../craft-extensions/crates/ext-cli", default-features = false }
 
 [profile.dev.package."*"]
 opt-level = 2

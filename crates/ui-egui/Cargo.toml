@@ -26,6 +26,12 @@ sys-locale = "0.3"
 skrifa = { version = "0.44", default-features = false, features = ["std"] }
 # The system time zone, so dates read as this computer's calendar; already in the desktop build.
 jiff = { workspace = true }
+# The Plugins dialog (plugins.rs): the shared plugin manager. The store is a folder on disk and the
+# catalogue refresh goes to the network, so these never reach the web build.
+craft-ext-core = { workspace = true }
+craft-ext-store = { workspace = true }
+craft-ext-ui = { workspace = true }
+craft-ext-cli = { workspace = true }
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 # The browser's time zone, for the same dates.

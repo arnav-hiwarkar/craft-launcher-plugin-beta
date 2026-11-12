@@ -23,7 +23,7 @@ impl LauncherUi {
         // An area is laid out in the size it had last frame, so dialogs can't share one id: the
         // uninstall prompt would open as tall as Settings and never shrink (#88).
         // The large dialogs run their header to the card's edges; the small prompts keep a margin.
-        let large = matches!(dialog, Dialog::Settings | Dialog::Notes(_));
+        let large = matches!(dialog, Dialog::Settings | Dialog::Plugins | Dialog::Notes(_));
         let modal = egui::Modal::new(egui::Id::unique("dialog").with(dialog.key())).frame(if large {
             crate::sheet::frame(&t)
         } else {
@@ -37,6 +37,7 @@ impl LauncherUi {
             Dialog::Install { app, folder } => modal.show(ctx, |ui| close = self.install_dialog(ui, app, folder, host)),
             Dialog::Replace { app, path } => modal.show(ctx, |ui| close = self.replace_dialog(ui, app, path)),
             Dialog::Settings => modal.show(ctx, |ui| close = self.settings_dialog(ui, host)),
+            Dialog::Plugins => modal.show(ctx, |ui| close = self.plugins_dialog(ui)),
             Dialog::LauncherUpdate(r) => modal.show(ctx, |ui| close = self.launcher_update_dialog(ui, r)),
             Dialog::Versions(id) => modal.show(ctx, |ui| close = self.version_dialog(ui, id)),
             Dialog::LaunchFlags { app, flags } => modal.show(ctx, |ui| close = self.launch_flags_dialog(ui, app, flags)),
@@ -58,6 +59,13 @@ impl LauncherUi {
         } else {
             self.dialog = Some(dialog);
         }
+    }
+
+    /// The web build has no plugin store, so its header never opens the Plugins dialog. The desktop
+    /// version is in `plugins.rs`.
+    #[cfg(target_arch = "wasm32")]
+    pub(crate) fn plugins_dialog(&mut self, _ui: &mut egui::Ui) -> bool {
+        true
     }
 
     /// The first alert from the release feed the user hasn't acknowledged, as a popup.

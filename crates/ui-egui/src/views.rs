@@ -186,6 +186,10 @@ impl LauncherUi {
                 if widgets::nav_icon(ui, widgets::Glyph::Settings, tl!("Settings"), h, false).clicked() {
                     self.dialog = Some(Dialog::Settings);
                 }
+                // Plugins need a store folder on disk, so the web build has no entry for them.
+                if cfg!(not(target_arch = "wasm32")) && widgets::nav_icon(ui, widgets::Glyph::Plugins, tl!("Plugins"), h, false).clicked() {
+                    self.dialog = Some(Dialog::Plugins);
+                }
                 // The controls reserve their actual widths before the secondary text gets space.
                 ui.with_layout(egui::Layout::left_to_right(egui::Align::Center), |ui| {
                     if ui.available_width() >= 17.0 + widgets::hud_galley(ui, tl!("Craft App Suite"), t.muted).size().x {

@@ -417,3 +417,7 @@ anicraft	Classic tweens with eight easing presets and custom ease curves, plus s
 	Unlock version?	解锁版本？
 	{app} is pinned to {version}. Follow the latest release instead?	{app} 已固定为 {version}。是否改为跟随最新版本？
 	Unlock	解锁
+	Plugins	插件
+	Plugins are unavailable: {error}	插件不可用：{error}
+	Updating the plugin catalogue…	正在更新插件目录…
+	The plugin catalogue could not be updated: {error}	无法更新插件目录：{error}

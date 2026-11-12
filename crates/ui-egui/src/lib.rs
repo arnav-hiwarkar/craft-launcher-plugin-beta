@@ -30,6 +30,9 @@ mod local_time;
 pub mod model;
 mod motion;
 mod notes;
+// The plugin store is a folder on disk and its catalogue refresh uses the network: desktop only.
+#[cfg(not(target_arch = "wasm32"))]
+mod plugins;
 pub mod settings;
 mod settings_dialog;
 mod sheet;

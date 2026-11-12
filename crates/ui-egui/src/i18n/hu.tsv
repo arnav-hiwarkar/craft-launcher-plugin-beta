@@ -450,3 +450,7 @@ anicraft	Classic tweens with eight easing presets and custom ease curves, plus s
 	Unlock version?	Feloldja a verzió zárolását?
 	{app} is pinned to {version}. Follow the latest release instead?	A(z) {app} a(z) {version} verzióra van rögzítve. Inkább a legújabb kiadást kövesse?
 	Unlock	Feloldás
+	Plugins	Bővítmények
+	Plugins are unavailable: {error}	A bővítmények nem érhetők el: {error}
+	Updating the plugin catalogue…	A bővítménykatalógus frissítése…
+	The plugin catalogue could not be updated: {error}	A bővítménykatalógust nem sikerült frissíteni: {error}

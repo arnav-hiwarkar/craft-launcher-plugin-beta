@@ -417,3 +417,7 @@ anicraft	Classic tweens with eight easing presets and custom ease curves, plus s
 	Unlock version?	Odemknout verzi?
 	{app} is pinned to {version}. Follow the latest release instead?	Aplikace {app} je uzamčena na verzi {version}. Přejít na nejnovější vydání?
 	Unlock	Odemknout
+	Plugins	Pluginy
+	Plugins are unavailable: {error}	Pluginy nejsou k dispozici: {error}
+	Updating the plugin catalogue…	Aktualizuje se katalog pluginů…
+	The plugin catalogue could not be updated: {error}	Katalog pluginů se nepodařilo aktualizovat: {error}

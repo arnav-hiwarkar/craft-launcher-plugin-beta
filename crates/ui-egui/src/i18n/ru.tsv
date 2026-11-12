@@ -445,3 +445,7 @@ anicraft	Classic tweens with eight easing presets and custom ease curves, plus s
 	Unlock version?	Разблокировать версию?
 	{app} is pinned to {version}. Follow the latest release instead?	Для {app} закреплена версия {version}. Перейти на последнюю версию?
 	Unlock	Разблокировать
+	Plugins	Плагины
+	Plugins are unavailable: {error}	Плагины недоступны: {error}
+	Updating the plugin catalogue…	Обновляется каталог плагинов…
+	The plugin catalogue could not be updated: {error}	Не удалось обновить каталог плагинов: {error}
