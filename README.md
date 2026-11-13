@@ -97,6 +97,17 @@ Plugins add features to the Craft apps: effects, panels and commands. Open **Plu
 - **The plugin index is fetched when you open Plugins.** The first time you open it in a session, ArtCraft Launcher refreshes the index in the background. Plugin files download only when you choose them.
 - **Plugins are made by their authors.** ArtCraft lists them but does not build, host or guarantee them.
 
+### Testing plugins
+
+Run a debug launcher against a local extension directory and catalogue:
+
+```sh
+CRAFT_EXT_DIR=<dir> CRAFT_CATALOGUE_URL=file:///home/ash/projects/plugin-beta/test-catalogue/ CRAFT_CATALOGUE_ALLOW_FILE=1 cargo run -p artcraft-launcher
+```
+
+Open **Plugins** in the header. The dialog should list plugins for all Craft apps, let you install
+one from the local catalogue, and offer setup for that plugin in each app that supports it.
+
 ## Interface languages
 
 The interface is in English, Brazilian Portuguese (Português (Brasil)), Czech (Čeština), French
