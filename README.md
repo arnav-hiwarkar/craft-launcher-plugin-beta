@@ -102,7 +102,7 @@ Plugins add features to the Craft apps: effects, panels and commands. Open **Plu
 Run a debug launcher against a local extension directory and catalogue:
 
 ```sh
-CRAFT_EXT_DIR=<dir> CRAFT_CATALOGUE_URL=file:///home/ash/projects/plugin-beta/test-catalogue/ CRAFT_CATALOGUE_ALLOW_FILE=1 cargo run -p artcraft-launcher
+CRAFT_EXT_DIR=<dir> CRAFT_CATALOGUE_URL=file://$ROOT/test-catalogue/ CRAFT_CATALOGUE_ALLOW_FILE=1 cargo run -p artcraft-launcher
 ```
 
 Open **Plugins** in the header. The dialog should list plugins for all Craft apps, let you install
