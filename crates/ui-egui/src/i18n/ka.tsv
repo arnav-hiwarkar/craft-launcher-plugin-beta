@@ -453,9 +453,8 @@ anicraft	Classic tweens with eight easing presets and custom ease curves, plus s
 	{app} is pinned to {version}. Follow the latest release instead?	{app} ფიქსირებულია {version} ვერსიაზე. სანაცვლოდ გამოიყენოთ უახლესი გამოშვება?
 	Unlock	განბლოკვა
 	Plugins	პლაგინები
+	Apps	აპლიკაციები
 	Plugins are unavailable: {error}	პლაგინები მიუწვდომელია: {error}
-	Updating the plugin catalogue…	პლაგინების კატალოგი განახლდება…
-	The plugin catalogue could not be updated: {error}	პლაგინების კატალოგის განახლება ვერ მოხერხდა: {error}
 
 	AI agents	AI აგენტები
 	While this is on, AI apps that use MCP, such as Claude, Cursor or LM Studio, can work with every installed Craft app through one entry. While it is off, no agent can reach them, and the entries added here are removed.	სანამ ეს ჩართულია, MCP-ის მქონე AI აპებს, მაგალითად Claude-ს, Cursor-ს ან LM Studio-ს, ერთი ჩანაწერით შეუძლიათ ყველა დაინსტალირებულ Craft აპთან მუშაობა. გამორთვისას ვერცერთი აგენტი ვერ მიაღწევს მათ და აქ დამატებული ჩანაწერები წაიშლება.

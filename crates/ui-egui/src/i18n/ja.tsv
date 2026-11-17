@@ -457,9 +457,8 @@ anicraft	Classic tweens with eight easing presets and custom ease curves, plus s
 	{app} is pinned to {version}. Follow the latest release instead?	{app} は {version} に固定されています。代わりに最新リリースを使用しますか？
 	Unlock	固定を解除
 	Plugins	プラグイン
+	Apps	アプリ
 	Plugins are unavailable: {error}	プラグインを利用できません：{error}
-	Updating the plugin catalogue…	プラグインのカタログを更新しています…
-	The plugin catalogue could not be updated: {error}	プラグインのカタログを更新できませんでした：{error}
 
 	AI agents	AI エージェント
 	While this is on, AI apps that use MCP, such as Claude, Cursor or LM Studio, can work with every installed Craft app through one entry. While it is off, no agent can reach them, and the entries added here are removed.	これをオンにしている間、Claude、Cursor、LM Studio など MCP を使う AI アプリは、1 つの登録でインストール済みのすべての Craft アプリを使えます。オフにすると、どのエージェントもアクセスできなくなり、ここで追加した登録は削除されます。

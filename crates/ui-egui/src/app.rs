@@ -115,8 +115,6 @@ pub(crate) enum Dialog {
     Install { app: String, folder: String },
     Replace { app: String, path: String },
     Settings,
-    // The shared plugin manager. Opened only on desktop (the header offers it there).
-    Plugins,
     LauncherUpdate(artcraft_launcher_core::Release),
     Versions(String),
     LaunchFlags { app: String, flags: String },
@@ -133,7 +131,6 @@ impl Dialog {
             Dialog::Install { app, .. } => ("install", app),
             Dialog::Replace { app, .. } => ("replace", app),
             Dialog::Settings => ("settings", ""),
-            Dialog::Plugins => ("plugins", ""),
             Dialog::LauncherUpdate(r) => ("launcher-update", &r.tag),
             Dialog::Versions(id) => ("versions", id),
             Dialog::LaunchFlags { app, .. } => ("launch-flags", app),
@@ -224,9 +221,22 @@ pub struct LauncherUi {
     /// While the user drags a pin handle: dragged catalog id and the pinned order at drag start
     /// (so Escape can restore it after live mid-drag reorders).
     pub(crate) pin_dragging: Option<(String, Vec<String>)>,
-    /// The Plugins dialog's state, made on its first open and kept after it closes.
+    /// The page the window shows: the apps, or (desktop only) the plugin store.
+    pub(crate) page: Page,
+    /// The plugin store's state, made the first time its page opens and kept after leaving it;
+    /// the error says why no store folder could be found.
     #[cfg(not(target_arch = "wasm32"))]
-    pub(crate) plugins: Option<crate::plugins::Plugins>,
+    pub(crate) plugins: Option<Result<crate::plugins::Plugins, String>>,
+}
+
+/// The launcher's top-level pages, switched from the header.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub(crate) enum Page {
+    #[default]
+    Apps,
+    /// The shared plugin manager for every app the launcher knows. Desktop only: the store is a
+    /// folder on disk.
+    Plugins,
 }
 
 /// The language to draw in: the preference, or English where it needs a CJK font the system
@@ -325,6 +335,7 @@ impl LauncherUi {
             flushed: Vec::new(),
             pending_toasts: Vec::new(),
             pin_dragging: None,
+            page: Page::Apps,
             #[cfg(not(target_arch = "wasm32"))]
             plugins: None,
         }
@@ -923,6 +934,11 @@ impl LauncherUi {
         egui::CentralPanel::default()
             .frame(egui::Frame::new().fill(tokens.bg).inner_margin(egui::Margin { left: 20, right: 20, top: 18, bottom: 0 }))
             .show(ui, |ui| {
+                #[cfg(not(target_arch = "wasm32"))]
+                if self.page == Page::Plugins {
+                    self.plugins_page(ui);
+                    return;
+                }
                 self.toolbar(ui);
                 ui.add_space(18.0);
                 let ids = self.visible_ids();

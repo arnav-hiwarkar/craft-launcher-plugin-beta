@@ -159,6 +159,22 @@ pub fn nav_icon(ui: &mut Ui, glyph: Glyph, tip: &str, height: f32, busy: bool) -
     if busy { resp } else { resp.on_hover_cursor(egui::CursorIcon::PointingHand) }
 }
 
+/// A header tab that switches the window between the launcher's pages. The open page's label is
+/// strong and underlined in the accent colour.
+pub fn page_tab(ui: &mut Ui, label: &str, selected: bool, height: f32) -> Response {
+    let t = Tokens::get(ui.ctx());
+    let galley = hud_galley(ui, label, t.muted);
+    let (rect, resp) = ui.allocate_exact_size(vec2(galley.size().x + 32.0, height), Sense::click());
+    let color = if selected || resp.hovered() { t.ink_strong } else { t.muted };
+    paint_centred(ui, rect, galley, color);
+    if selected {
+        let line = Rect::from_min_max(egui::pos2(rect.left() + 12.0, rect.bottom() - 2.0), egui::pos2(rect.right() - 12.0, rect.bottom()));
+        ui.painter().rect_filled(line, CornerRadius::ZERO, t.accent);
+    }
+    resp.widget_info(|| egui::WidgetInfo::selected(egui::Role::Tab, true, selected, label));
+    resp.on_hover_cursor(egui::CursorIcon::PointingHand)
+}
+
 /// How far in from the window's edges a custom title bar's window resizes ([`window_edges`]).
 /// The title bar's own controls leave this band alone.
 const RESIZE_EDGE: f32 = 5.0;
@@ -730,8 +746,6 @@ pub enum Glyph {
     Lock,
     /// Six-dot grip for reordering pinned apps.
     Grip,
-    /// A square with a knob on its top edge: the Plugins dialog's header button.
-    Plugins,
 }
 
 /// Paints one of the launcher's symbols with the painter, centred in `rect`.
@@ -810,12 +824,6 @@ fn glyph_shapes(rect: Rect, glyph: Glyph, color: Color32) -> Vec<egui::Shape> {
                 shapes.push(egui::Shape::circle_filled(m + vec2(dx, dy), 1.35, color));
             }
             shapes
-        }
-        Glyph::Plugins => {
-            // One closed outline: a square with a knob on its top edge, within ±5 px of the centre.
-            let outline = [(-5.0, -2.0), (-2.0, -2.0), (-2.0, -5.0), (2.0, -5.0), (2.0, -2.0), (5.0, -2.0), (5.0, 5.0), (-5.0, 5.0)]
-                .map(|(dx, dy)| m + vec2(dx, dy));
-            vec![egui::Shape::closed_line(outline.to_vec(), Stroke::new(1.5, color))]
         }
     }
 }
@@ -1230,7 +1238,7 @@ mod tests {
     /// the tool-button and header-cell sizes, or a click target would draw outside its hit rect.
     #[test]
     fn every_painter_glyph_stays_inside_its_control() {
-        for glyph in [Glyph::Pause, Glyph::Close, Glyph::Settings, Glyph::Refresh, Glyph::Grip, Glyph::Lock, Glyph::Plugins] {
+        for glyph in [Glyph::Pause, Glyph::Close, Glyph::Settings, Glyph::Refresh, Glyph::Grip, Glyph::Lock] {
             for side in [20.0, crate::theme::CONTROL_H, 48.0] {
                 let rect = Rect::from_min_size(egui::pos2(100.0, 200.0), egui::vec2(side, side));
                 let shapes = glyph_shapes(rect, glyph, Color32::WHITE);
@@ -1337,7 +1345,7 @@ mod tests {
     #[test]
     fn each_glyph_has_its_own_shapes() {
         let rect = Rect::from_min_size(egui::Pos2::ZERO, egui::vec2(crate::theme::CONTROL_H, crate::theme::CONTROL_H));
-        let bounds: Vec<[u32; 4]> = [Glyph::Pause, Glyph::Close, Glyph::Settings, Glyph::Refresh, Glyph::Grip, Glyph::Lock, Glyph::Plugins]
+        let bounds: Vec<[u32; 4]> = [Glyph::Pause, Glyph::Close, Glyph::Settings, Glyph::Refresh, Glyph::Grip, Glyph::Lock]
             .into_iter()
             .map(|glyph| {
                 let union = glyph_shapes(rect, glyph, Color32::WHITE)

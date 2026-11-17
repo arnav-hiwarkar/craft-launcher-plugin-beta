@@ -455,9 +455,8 @@ anicraft	Classic tweens with eight easing presets and custom ease curves, plus s
 	{app} is pinned to {version}. Follow the latest release instead?	A(z) {app} a(z) {version} verzióra van rögzítve. Inkább a legújabb kiadást kövesse?
 	Unlock	Feloldás
 	Plugins	Bővítmények
+	Apps	Alkalmazások
 	Plugins are unavailable: {error}	A bővítmények nem érhetők el: {error}
-	Updating the plugin catalogue…	A bővítménykatalógus frissítése…
-	The plugin catalogue could not be updated: {error}	A bővítménykatalógust nem sikerült frissíteni: {error}
 
 	AI agents	AI-ügynökök
 	While this is on, AI apps that use MCP, such as Claude, Cursor or LM Studio, can work with every installed Craft app through one entry. While it is off, no agent can reach them, and the entries added here are removed.	Amíg ez be van kapcsolva, az MCP-t használó AI-alkalmazások, például a Claude, a Cursor vagy az LM Studio, egyetlen bejegyzésen át dolgozhatnak minden telepített Craft alkalmazással. Kikapcsolva egyetlen ügynök sem éri el őket, és az itt hozzáadott bejegyzések törlődnek.
