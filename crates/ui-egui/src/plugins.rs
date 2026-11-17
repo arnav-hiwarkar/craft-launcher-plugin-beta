@@ -32,7 +32,7 @@ impl Plugins {
     fn open<'a>(apps: impl Iterator<Item = &'a str>) -> Result<Self, String> {
         let root = location::default_root().map_err(|e| e.to_string())?;
         let targets = apps.filter_map(|id| Some(AppTarget { app: AppId::new(id).ok()?, provided: known_apps::provided(id)? })).collect();
-        Ok(Self { view: PluginManager::new(Config::new(root, targets, platform())) })
+        Ok(Self { view: PluginManager::new(Config::new(root, targets, craft_ext_ui::craft_ext_host::native::platform())) })
     }
 }
 
@@ -48,12 +48,6 @@ impl Words for LauncherWords {
     fn app(&self, app: &AppId) -> String {
         hosted_catalog::apps().iter().find(|a| a.id == app.as_str()).map_or_else(|| app.to_string(), |a| a.name.to_string())
     }
-}
-
-/// The platform key native plugins are listed under (`linux-x86_64`, `macos-aarch64`, …), the same
-/// key `craft_ext_host::native::platform` gives.
-fn platform() -> String {
-    format!("{}-{}", std::env::consts::OS, std::env::consts::ARCH)
 }
 
 impl LauncherUi {
