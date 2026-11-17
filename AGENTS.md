@@ -246,3 +246,13 @@ Packaging facts the code relies on:
 - Some workflow files here still run their own jobs. Don't add to them. Moving a job into craft-common-actions is its own task, never part of another PR, and the job stays here until a shared workflow runs it.
 
 New workspace crates include `[lints] workspace = true` in `Cargo.toml`. Production crate roots declare the crate-level lint attributes before modules; crate-level `//!` documentation may precede them.
+
+## Suite plugin replacement policy
+
+When changing plugin implementations, app UI integration, lifecycle flows or merging
+upstream plugin/UI changes in this private beta fork, apply the user-directed
+[suite replacement rule](https://github.com/arnav-hiwarkar/craft-extensions-plugin-beta/blob/plugin-beta/docs/plugins/suite-replacement-rule.md). In the sibling beta workspace the same file is
+`../craft-extensions/docs/plugins/suite-replacement-rule.md`. Inspect and learn from
+each app's existing capabilities, migrate and verify the flows, then remove the
+superseded implementations. Keep one shared platform and one canonical adapter per
+app, coordinated with the current framework/UI work.
