@@ -188,7 +188,6 @@ impl LauncherUi {
                 }
                 // The controls reserve their actual widths before the secondary text gets space.
                 ui.with_layout(egui::Layout::left_to_right(egui::Align::Center), |ui| {
-                    // Plugins need a store folder on disk, so the web build has only the apps page.
                     if cfg!(not(target_arch = "wasm32")) {
                         widgets::rule(ui, h);
                         for (page, label) in [(Page::Apps, tl!("Apps")), (Page::Plugins, tl!("Plugins"))] {
